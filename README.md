@@ -1,9 +1,7 @@
-
 <h1 align="center">SKeylogger</h1>
 <h4 align="center">A really simple NodeJS Keylogger</h4>
 <p align="center">
 	<a href="https://github.com/I2rys/SKeylogger/blob/main/LICENSE"><img src="https://img.shields.io/github/license/I2rys/SKeylogger?style=flat-square"></img></a>
-	<a href="https://github.com/I2rys/SKeylogger"><img src="https://bettercodehub.com/edge/badge/I2rys/SKeylogger?branch=main"></a>
 	<a href="https://github.com/I2rys/SKeylogger/issues"><img src="https://img.shields.io/github/issues/I2rys/SKeylogger.svg"></img></a>
 	<a href="https://nodejs.org/"><img src="https://img.shields.io/badge/-Nodejs-green?style=flat-square&logo=Node.js"></img></a>
 </p>
